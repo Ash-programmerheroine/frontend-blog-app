@@ -24,6 +24,16 @@
     --card-border-radius-4: 2rem;
     --card-border-radius-5: 5rem;
 }
+
+/* =======================================================
+Google Font
+================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* =======================================================
+Genaral
+================================================================== */
 *{
     margin:0;
     padding:0;
@@ -35,13 +45,6 @@
     box-sizing: border-box;
 
 }
-/* =======================================================
-Google Font
-================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-/* =======================================================
-Genaral
-================================================================== */
 body{
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
@@ -74,10 +77,13 @@ h2{
 }
 h3{
     font-size: 1.1rem;
-    image-rendering: .8rem 0 0.5rem;
+    margin: .8rem 0 0.5rem;
      
 }
 h4{font-size: 1rem;}
+h5{
+    margin:0;
+}
 a{
     color:var(--color-white);
     transition: var(--transition);
@@ -185,16 +191,19 @@ text-align: center;
     filter:saturate(0);
     transition: filter 500ms ease;
 }
-.post__author{
+
+.post__author-avatar img{
+    width:3rem;
+    height:3rem;
+    border-radius: var(--card-border-radius-3);
+}
+.post__author-avatar {
+    
     display:flex;
+    text-align: justify;
     gap:1rem;
     margin-top:1.2rem;
-}
-.post__author-avatar img{
-    width:2.5rem;
-    height:2.5rem;
-    border-radius: var(--card-border-radius-3);
-    overflow:hidden;
+    
 }
 /* =======================================================
  Featured post
@@ -216,4 +225,201 @@ text-align: center;
     grid-template-columns: repeat(3, 1fr);
     gap:5rem;
     margin-bottom: 5rem;
+}
+/* =======================================================
+ Category Tab post
+================================================================== */
+
+.category__buttons {
+    padding: 4rem 0;
+    border-top: 2px solid var(--color-gray-900); border-bottom: 2px solid var(--color-gray-900);
+    
+}
+.category__buttons-container{
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* =======================================================
+ Foorter
+================================================================== */
+footer {
+    background: var(--color-gray-900);
+    padding: 5rem 0 0;
+    box-shadow: inset 0 1.5rem 1.5rem rgba(0, 0,
+    0, 0.2);
+}
+.footer__socials {
+    margin-inline: auto;
+    width: fit-content;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+}
+.footer__socials a{
+    background: var(--color-bg);
+    border-radius:50%;
+    width:2.3rem;
+    height:2.3rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+.footer__socials a:hover{
+    background: var(--color-white);
+    color:var(--color-bg);
+}
+.footer__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+footer h4{
+    color:var(--color-white);
+    margin-bottom: 0.6rem;
+}
+footer ul li{
+    padding: 0.4rem 0;
+}
+footer ul a{
+    opacity:0.75;
+}
+footer ul a:hover{
+    letter-spacing:0.2rem;
+    opacity:1;
+}
+.footer__copyright{
+    
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top:2px solid var(--color-primary);
+    margin-top:4rem;
+}
+/* =======================================================
+ MEDIA QUERIES FOR Medium devices
+================================================================== */
+
+
+@media screen and (max-width: 1024px) {
+    /* =====General======= */
+    .container {
+        width:
+        var(--container-width-md);
+    }
+    h2 {
+         font-size: 1.4rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    /* =====Nav======= */
+    nav button {
+        display: inline-block; font-size: 1.5rem;
+        background: transparent; color: var(--color-white); cursor: pointer;
+    }
+    nav button#close_nav-btn {
+        display: none;
+    }
+    
+    .nav_container { 
+        position: relative;
+    }
+    .nav_items{
+        position:absolute;
+        flex-direction: column;
+        top:100%;
+        right:0;
+        width:12rem;
+        align-items:flex-start;
+        justify-content: center;
+        gap:0;
+    }
+    
+
+    .nav_items li {
+        width: 100%;
+        height: 4.5rem; display: flex;
+        align-items: center;
+        box-shadow: -2rem 3rem 7rem Orgba(0, 0, 0, 0.7);
+        border-top: 1px solid var(--color-bg);
+        animation: animateDropdown 400ms 0s ease forwards;
+        opacity:0;
+        transform-origin: top;
+      
+    }
+    .nav_items li:nth-child(2){
+        animation-delay: 200ms;
+    }
+    .nav_items li:nth-child(3){
+        animation-delay: 400ms;
+    }
+    .nav_items li:nth-child(4){
+        animation-delay: 600ms;
+    }
+    .nav_items li:nth-child(5){
+        animation-delay: 800ms;
+    }
+    /* nav dropdown animation */
+    @keyframes animateDropdown {
+        0% {
+            transform: rotateX(90deg);
+        }
+        100% {
+            transform: rotateX(0deg);
+            opacity:1;
+        }
+    }
+    .nav_items li a{
+            border-radius: 0;
+            width: 100%;
+            height:100%;
+            background: var(--color-gray-900);
+            padding:0 2rem;
+            display: flex;
+            align-items: center;
+    }
+    .nav__profile{
+        background: var(--color-gray-900);
+    }
+    .nav__profile ul{
+         top:100%;
+         width:100%;
+    }
+    .nav__profile .avatar{
+        margin-left: 2rem;
+    }
+    .featured__container{
+        gap:3rem;
+    }
+    .posts__container{
+        gap:3rem;
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer__container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* =======================================================
+ MEDIA QUERIES FOR Small devices
+================================================================== */
+@media screen and (max-width: 600px){
+    section{
+        margin-top:2rem;
+    }
+    h1{
+        font-size:1.4rem;
+    }
+    .featured{
+        margin-top:6rem;
+    }
+    .featured__container{
+        grid-template-columns: 1fr;
+        gap:0;
+    }
 }
